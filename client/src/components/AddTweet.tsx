@@ -1,3 +1,4 @@
+import { Button, Stack, Textarea } from "@chakra-ui/react";
 import { useState } from "react";
 
 const AddTweet = ({ contract, account, getTweets }: any) => {
@@ -23,25 +24,35 @@ const AddTweet = ({ contract, account, getTweets }: any) => {
   }
 
   return (
-    <form
-      id="tweetForm"
-      onSubmit={(e) => {
-        e.preventDefault();
-        createTweet(newTweet);
-      }}
-    >
-      <textarea
-        id="tweetContent"
-        rows={4}
-        placeholder="What's happening?"
-        value={newTweet}
-        onChange={(e) => setNewTweet(e.target.value)}
-      />
-      <br />
-      <button id="tweetSubmitBtn" disabled={loading} type="submit">
-        {loading ? <div className="spinner"></div> : <>Tweet</>}
-      </button>
-    </form>
+    <Stack spacing={8}>
+      <form
+        id="tweetForm"
+        onSubmit={(e) => {
+          e.preventDefault();
+          createTweet(newTweet);
+        }}
+      >
+        <Stack spacing={4}>
+          <Textarea
+            id="tweetContent"
+            rows={4}
+            placeholder="What's happening?"
+            value={newTweet}
+            onChange={(e) => setNewTweet(e.target.value)}
+          />
+          <br />
+          <Button
+            colorScheme="twitter"
+            id="tweetSubmitBtn"
+            isLoading={loading}
+            isDisabled={loading}
+            type="submit"
+          >
+            {loading ? <div className="spinner"></div> : <>Tweet</>}
+          </Button>
+        </Stack>
+      </form>
+    </Stack>
   );
 };
 

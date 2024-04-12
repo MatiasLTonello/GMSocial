@@ -1,18 +1,19 @@
+import { Button, Text } from "@chakra-ui/react";
 
 const Connect = ({account, connectWallet, shortAddress}: any) => {
     return (
         <div>
           <div>
             {!account ? (
-              <button id="connectWalletBtn" onClick={connectWallet}>
+              <Button colorScheme='twitter' id="connectWalletBtn" onClick={connectWallet}>
                 Connect Wallet
-              </button>
+              </Button>
             ) : (
-              <div id="userAddress">Connected: {shortAddress(account)}</div>
+              <Text id="userAddress">Connected: {shortAddress(account)}</Text>
             )}
           </div>
           <div id="connectMessage">
-            {!account ? "Please connect your wallet to tweet." : ""}
+            {!account ? <Text>Please connect your wallet to tweet.</Text> : ""}
           </div>
         </div>
       );
